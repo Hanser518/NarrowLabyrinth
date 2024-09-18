@@ -13,33 +13,50 @@ public class Unit {
     /**
      * 单元格状态列表
      */
-    private List<Integer> status = new ArrayList<>();
+    private List<Integer> kinds = new ArrayList<>();
+
+    /**
+     * 当前单元格访问状态
+     */
+    private boolean visited = false;
 
 
     public Unit(Integer dimension){
         this.dimension = dimension;
         for(int i = 0;i < dimension;i ++){
-            status.add(1);
+            kinds.add(1);
         }
     }
 
     public void reset(Integer value) {
-        status.replaceAll(content -> value);
+        kinds.replaceAll(content -> value);
     }
 
-    public void setStatus(List<Integer> status) {
-        this.status = status;
+    public void setKinds(List<Integer> kinds) {
+        this.kinds = kinds;
     }
 
     public void setStatus(Integer index, Integer status) {
-        this.status.set(index, status);
+        this.kinds.set(index, status);
     }
 
     public Integer getStatus(int index){
-        return this.status.get(index);
+        return this.kinds.get(index);
     }
 
-    public List<Integer> getStatus(){
-        return this.status;
+    public List<Integer> getKinds(){
+        return this.kinds;
+    }
+
+    public void resetVisit(){
+        this.visited = false;
+    }
+
+    public void visit(){
+        this.visited = true;
+    }
+
+    public boolean getVisit(){
+        return visited;
     }
 }
